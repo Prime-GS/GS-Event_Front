@@ -3,8 +3,9 @@ import { ICategory } from './categories'
 import { IUser } from './users'
 
 export interface IEvent {
-  id?: number
+  id: number
   title: string
+  slug: string
   description: string
   startedAt: Date
   categoriesIds: number[]
@@ -20,10 +21,10 @@ export interface IEvent {
 export interface IEventInput {
   id?: number
   title: string
+  slug: string
   description: string
   startedAt: Date
   categoriesIds: number[]
-  creatorId: number
 }
 
 export interface IEventsData {

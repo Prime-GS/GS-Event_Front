@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import { EventList } from '@/sections/events/EventList'
 import { HasRolesContent } from '@/components/auth'
 
 export default function Events() {
@@ -14,7 +15,7 @@ export default function Events() {
         </HasRolesContent>
       </div>
 
-      {/* <EventList /> */}
+      <EventList />
     </section>
   )
 }

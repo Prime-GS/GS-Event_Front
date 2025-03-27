@@ -1,28 +1,41 @@
+import { Loader } from '@/components/UI'
+import { useEventById } from '@/graphql/hooks/events'
+import { EventForm } from '@/sections/events/EventForm'
+import moment from 'moment'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export default function EditEvent() {
   const navigate = useNavigate()
-  const { id } = useParams()
-  if (!id) {
+  const { id: params } = useParams()
+  if (!params) {
     navigate('/404')
   }
-  // const eventId = Number(id)
-  // const { Event: event, loading } = useEventById(eventId)
+  const eventId = Number(params)
+  const { event, loading } = useEventById(eventId)
 
-  // if (!event) {
-  //   navigate('/404')
-  //   return
-  // }
+  if (!event) {
+    navigate('/404')
+    return
+  }
+  const { id, title, slug, description, categoriesIds, startedAt } = event
 
-  return (
-    // loading ? (
-    //   <Loader full />
-    // ) :
+  return loading ? (
+    <Loader full />
+  ) : (
     <div className='row mt-5'>
       <div className='col-6 mx-auto'>
-        <h4 className='mb-3'>Редактирование ивента</h4>
+        <h4 className='mb-3'>Редактирование ивента {event.title}</h4>
 
-        {/* <EventForm /> */}
+        <EventForm
+          event={{
+            id,
+            title,
+            slug,
+            description,
+            categoriesIds,
+            startedAt: moment(startedAt).add(1, 'd').format('yyyy-MM-DDThh:mm'),
+          }}
+        />
       </div>
     </div>
   )

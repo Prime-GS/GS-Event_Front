@@ -9,6 +9,7 @@ import { HasRolesContent } from '@/components/auth'
 import { IMenuItem, mainMenu } from '@/constants/mainMenu'
 
 import styles from './header.module.scss'
+import { Form } from 'react-bootstrap'
 
 export function Header() {
   const [offcanvasShow, setOffcanvasShow] = useState(false)
@@ -52,12 +53,12 @@ export function Header() {
 
         <div className={styles.logoContainer}>
           <Link to='/'>
-            <img src='logo.png' alt='GSEvent' width={'auto'} height={48} />
+            <img src='/logo.png' alt='GSEvent' width={'auto'} height={48} />
           </Link>
         </div>
         <form action={'/search'} className={`${styles.search} ${searchShow ? styles.showSearch : ''}`}>
           <div className={styles.searchField}>
-            <input type='text' name='q' className={styles.searchInput} placeholder='Поиск по сайту' />
+            <Form.Control type='text' name='q' className={styles.searchInput} placeholder='Поиск по сайту' />
             <IconButton type='submit' className={styles.searchSubmit} aria-label='Search menu'>
               <SearchIcon color='#ced4da' />
             </IconButton>

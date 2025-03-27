@@ -1,14 +1,31 @@
 import { gql } from '@apollo/client'
+import { CATEGORY_FRAGMENT } from './categories'
+import { USER_FRAGMENT } from './users'
 
 export const EVENT_FRAGMENT = gql`
   fragment EventFragment on Event {
     id
     title
+    slug
     description
-    color
+    startedAt
+    categoriesIds
+    categories {
+      ...CategoryFragment
+    }
+    subscribersIds
+    subscribers {
+      ...UserFragment
+    }
+    creatorId
+    creator {
+      ...UserFragment
+    }
     createdAt
     updatedAt
   }
+  ${CATEGORY_FRAGMENT}
+  ${USER_FRAGMENT}
 `
 
 export const GET_EVENTS = gql`
