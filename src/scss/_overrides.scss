@@ -1,0 +1,34 @@
+a {
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn-outline-light {
+  color: $gray-600;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+}
+
+.btn {
+  color: $gray-100;
+}
+
+.card {
+  background: $secondary;
+  color: $white;
+}
+
+.modal-content {
+  background: $secondary;
+}

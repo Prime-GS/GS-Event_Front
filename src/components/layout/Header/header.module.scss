@@ -1,0 +1,134 @@
+.root {
+  width: 100%;
+  background-color: $secondary;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  height: $header-height;
+  z-index: 9999 !important;
+}
+
+.nav {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 1rem;
+
+  @media screen and (max-width: $lg) {
+    display: none;
+  }
+
+  a {
+    color: #fff;
+    display: inline-block;
+    margin: 0 0.8rem;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.logoContainer {
+  @media screen and (max-width: $lg) {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.togglesBox {
+  display: none;
+
+  @media screen and (max-width: $lg) {
+    display: block;
+    width: 38px;
+  }
+}
+
+.navToggler {
+  background-color: transparent;
+  padding: 0.5rem;
+  border: none;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin-bottom: 4px;
+
+    &:nth-child(2) {
+      background-color: $primary;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      width: 70%;
+    }
+  }
+}
+
+.search {
+  width: calc(30% - 2rem);
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+  transition-property: opacity, visibility;
+
+  @media screen and (max-width: $lg) {
+    width: calc(100% - 240px);
+  }
+
+  @media screen and (max-width: $md) {
+    width: calc(100% - 2rem);
+  }
+
+  &.showSearch {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .searchField {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .searchInput {
+      width: 100%;
+      height: 34px;
+      padding-left: 1rem;
+      padding-right: 2rem;
+      outline: none;
+
+      border: 1px #838b93 solid;
+      border-radius: 2px;
+
+      @media screen and (max-width: $md) {
+        width: 100%;
+      }
+    }
+
+    .searchSubmit {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .searchClose {
+    background-color: $secondary;
+    margin-left: 1rem;
+  }
+}

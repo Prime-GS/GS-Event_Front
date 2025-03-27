@@ -1,0 +1,13 @@
+// Bootstrap functions
+@import '~bootstrap/scss/functions';
+
+// Bootstrap variable overrides
+// ...
+@import './variables';
+
+// Bootstrap variables
+@import '~bootstrap/scss/variables';
+
+// Bootstrap required parts
+@import '~bootstrap/scss/maps';
+@import '~bootstrap/scss/mixins';

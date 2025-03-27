@@ -1,0 +1,49 @@
+
+.root {
+  top: $header-height !important;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: $secondary;
+  color: $white;
+}
+
+.body {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.menuItem {
+  background-color: $blue-light;
+  margin-top: 2px;
+
+  span,
+  a {
+    display: block;
+    padding: 1rem;
+    color: $gray-700;
+  }
+
+  > span,
+  > a {
+    font-weight: $font-weight-medium;
+  }
+
+  ul {
+    margin: 0;
+    background-color: $secondary;
+    font-size: $font-size-sm;
+
+    span,
+    a {
+      color: $gray-600;
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-top: 1px solid $gray-200;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.image-16x9 {
+  @extend .ratio;
+  @extend .ratio-16x9;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.image-1x1 {
+  @extend .ratio;
+  @extend .ratio-1x1;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.text-caption {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  font-weight: $font-weight-light;
+}
+
+.btn-info-light {
+  color: $gray-600 !important;
+}
+
+.fade {
+  transition: opacity 0.15s linear;
+}
