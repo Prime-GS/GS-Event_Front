@@ -1,13 +1,15 @@
+import { Link, useNavigate } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import { Link } from 'react-router-dom'
 
 import { useStores } from '@/stores/hooks'
 
 export const OffcanvasAccount = observer(() => {
   const { authStore } = useStores()
+  const navigate = useNavigate()
 
   const logout = () => {
     authStore.logout()
+    navigate('/auth/login')
   }
 
   return (
