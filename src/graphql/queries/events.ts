@@ -72,3 +72,9 @@ export const DELETE_EVENT = gql`
     deleteEvent(id: $id)
   }
 `
+
+export const TOGGLE_SUBSCRIBE = gql`
+  mutation ToggleSubscribe($id: Int!) {
+    toggleSubscribe(id: $id)
+  }
+`

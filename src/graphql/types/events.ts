@@ -46,3 +46,11 @@ export interface IUpsertEventData {
 export interface IUpsertEventVariables {
   input: IEventInput
 }
+
+export interface ISubscribeData {
+  toggleSubscribe: boolean
+}
+
+export interface ISubscribeVariable {
+  id: number
+}
