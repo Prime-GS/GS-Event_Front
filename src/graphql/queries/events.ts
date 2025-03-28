@@ -49,6 +49,15 @@ export const GET_EVENT_BY_ID = gql`
   ${EVENT_FRAGMENT}
 `
 
+export const GET_EVENT_BY_SLUG = gql`
+  query GetEventBySlugQuery($slug: String!) {
+    eventBySlug(slug: $slug) {
+      ...EventFragment
+    }
+  }
+  ${EVENT_FRAGMENT}
+`
+
 export const UPSERT_EVENT = gql`
   mutation UpsertEventMutation($input: EventInput!) {
     upsertEvent(input: $input) {

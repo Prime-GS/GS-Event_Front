@@ -56,21 +56,21 @@ export function EventList() {
 
       <div className='row mt-2'>
         {events.map((event) => (
-          <div key={`Event-item-${event.id}`} className='col-6 col-md-4'>
+          <div key={`Event-item-${event.id}`} className='col-12 col-md-6 col-lg-4 mb-4'>
             <div className='card h-100' style={{ maxHeight: '300px' }}>
               <div className='card-body d-flex flex-column justify-content-between gap-2'>
                 <div className='card-title'>
                   <h3>
-                    <Link to={`events/${event.slug}`}>{event.title}</Link>
+                    <Link to={`/events/${event.slug}`}>{event.title}</Link>
                   </h3>
                   {event.categories.length !== 0 ? (
-                    <div className='d-flex gap-2'>
+                    <div className='d-flex flex-wrap gap-2'>
                       {event.categories.map((cat) => {
                         return (
                           <div
                             key={`selected-category-${cat.id}`}
                             style={{ fontSize: '12px' }}
-                            className='bg-primary rounded-5 p-1 px-2'
+                            className='bg-primary rounded-5 px-2'
                           >
                             {cat.title}
                           </div>
@@ -78,13 +78,12 @@ export function EventList() {
                       })}
                     </div>
                   ) : (
-                    <div style={{ fontSize: '12px' }} className='bg-primary d-inline rounded-5 p-1 px-2'>
+                    <div style={{ fontSize: '14px' }} className='d-inline bg-primary rounded-5 px-2'>
                       Категорий нет
                     </div>
                   )}
                 </div>
-                <p className='card-text'>{event.description}</p>
-                <div className='small d-block mt-auto'>
+                <div className='small d-block mt-auto w-75'>
                   Дата начала: {moment(event.startedAt).format('D MMMM HH:mm')}
                 </div>
 

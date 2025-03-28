@@ -35,6 +35,10 @@ export interface IEventByIdData {
   event: IEvent
 }
 
+export interface IEventBySlugData {
+  eventBySlug: IEvent
+}
+
 export interface IUpsertEventData {
   upsertEvent: IEvent
 }

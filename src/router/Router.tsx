@@ -47,6 +47,7 @@ function Router() {
         <Route path='/categories/edit/:id' element={<EditCategory />} />
 
         <Route path='/events' element={<Events />} />
+        <Route path='/events/:slug' element={<Event />} />
         <Route path='/events/create' element={<CreateEvent />} />
         <Route path='/events/edit/:id' element={<EditEvent />} />
       </Route>
@@ -77,6 +78,7 @@ const CreateCategory = Loadable(lazy(() => import('../pages/categories/CreateCat
 const EditCategory = Loadable(lazy(() => import('../pages/categories/EditCategory')))
 
 const Events = Loadable(lazy(() => import('../pages/events/Events')))
+const Event = Loadable(lazy(() => import('../pages/events/Event')))
 const CreateEvent = Loadable(lazy(() => import('../pages/events/CreateEvent')))
 const EditEvent = Loadable(lazy(() => import('../pages/events/EditEvent')))
 
