@@ -1,13 +1,14 @@
 $main-layout-width: 1600px;
 
 body {
-  background-color: #131a20;
+  background-color: $dark;
 }
 
 .main-layout {
   display: block;
   max-width: $main-layout-width;
   margin: 0 auto;
+  padding: 0 1rem;
   min-height: 80vh;
 
   margin-top: 1rem;

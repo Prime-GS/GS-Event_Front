@@ -6,6 +6,7 @@ import styles from './offcanvasMenu.module.scss'
 import { Link } from 'react-router-dom'
 import { mainMenu } from '@/constants/mainMenu'
 import { HasRolesContent } from '@/components/auth'
+import { OffcanvasAccount } from '@/components/layout/OffcanvasAccount'
 
 interface IProps {
   show: boolean
@@ -36,6 +37,8 @@ export function OffcanvasMenu({ show, hiding, onClose }: IProps) {
                 </div>
               </HasRolesContent>
             ))}
+            <div className='flex-grow-1' />
+            <OffcanvasAccount />
           </div>
         </div>
       </div>

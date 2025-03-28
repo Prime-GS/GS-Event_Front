@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { Form, FormikProvider, useFormik } from 'formik'
+import { Form as FormikForm, FormikProvider, useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import { LoadingButton } from '@/components/UI'
 import { useLogin } from '@/graphql/hooks/auth'
 import { useStores } from '@/stores/hooks'
+import { FloatingLabel, Form } from 'react-bootstrap'
 
 interface IFormValues {
   login: string
@@ -36,8 +37,9 @@ export function LoginForm() {
           authStore.login(data.login.user, data.login.token, true)
           navigate('/')
         }
-      } catch (error) {
-        formHelper.setErrors({ afterSubmit: 'Неверные данные' })
+      } catch (error: any) {
+        console.log(error)
+        formHelper.setErrors({ afterSubmit: error })
       }
     },
   })
@@ -46,37 +48,27 @@ export function LoginForm() {
 
   return (
     <FormikProvider value={formik}>
-      <Form autoComplete='off' noValidate onSubmit={handleSubmit}>
+      <FormikForm autoComplete='off' noValidate onSubmit={handleSubmit}>
         {!!errors.afterSubmit && (
           <div className='alert alert-danger' role='alert'>
             {errors.afterSubmit}
           </div>
         )}
 
-        <div className='mb-3'>
-          <label htmlFor='email' className='form-label'>
-            Логин/Email
-          </label>
-          <input
-            id='email'
-            type='email'
-            className='form-control'
-            placeholder='name@example.com'
-            {...getFieldProps('login')}
-          />
-        </div>
+        {!!errors.login && <small className='text-danger'>{errors.login}</small>}
+        <FloatingLabel label={`Username/Email *`} className='mb-3'>
+          <Form.Control required {...getFieldProps('login')} />
+        </FloatingLabel>
 
-        <div className='mb-3'>
-          <label htmlFor='password' className='form-label'>
-            Пароль
-          </label>
-          <input id='password' type='password' className='form-control' {...getFieldProps('password')} />
-        </div>
+        {!!errors.password && <small className='text-danger'>{errors.password}</small>}
+        <FloatingLabel label={`Пароль *`} className='mb-3'>
+          <Form.Control type='password' required {...getFieldProps('password')} />
+        </FloatingLabel>
 
-        <LoadingButton className='mb-3' loading={loading} type='submit' variant='contained'>
-          Войти
+        <LoadingButton className='btn-primary mb-3' loading={loading} type='submit' variant='contained'>
+          Вход
         </LoadingButton>
-      </Form>
+      </FormikForm>
     </FormikProvider>
   )
 }

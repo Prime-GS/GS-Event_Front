@@ -1,7 +1,6 @@
 import { ElementType, Suspense, lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { AuthLayout } from '../layouts/auth'
 import { MainLayout } from '../layouts/main'
 import { AuthGuard, GuestGuard, RoleGuard } from './guards'
 import { Loader } from '@/components/UI'
@@ -14,11 +13,19 @@ function Router() {
         path='auth'
         element={
           <GuestGuard>
-            <AuthLayout />
+            <MainLayout />
           </GuestGuard>
         }
       >
         <Route index path='login' element={<Login />} />
+        <Route index path='registration' element={<Registration />} />
+      </Route>
+
+      <Route path='/' element={<MainLayout />}>
+        <Route index element={<Home />} />
+
+        <Route path='/events' element={<Events />} />
+        <Route path='/events/:slug' element={<Event />} />
       </Route>
 
       <Route
@@ -29,8 +36,6 @@ function Router() {
           </AuthGuard>
         }
       >
-        <Route index element={<Home />} />
-
         <Route
           path='/users'
           element={
@@ -41,13 +46,12 @@ function Router() {
         />
 
         <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/update' element={<UpdateProfile />} />
 
         <Route path='/categories' element={<Categories />} />
         <Route path='/categories/create' element={<CreateCategory />} />
         <Route path='/categories/edit/:id' element={<EditCategory />} />
 
-        <Route path='/events' element={<Events />} />
-        <Route path='/events/:slug' element={<Event />} />
         <Route path='/events/create' element={<CreateEvent />} />
         <Route path='/events/edit/:id' element={<EditEvent />} />
       </Route>
@@ -70,8 +74,11 @@ const Loadable = (Component: ElementType) => (props: any) => {
 }
 
 const Login = Loadable(lazy(() => import('../pages/auth/Login')))
+const Registration = Loadable(lazy(() => import('../pages/auth/Registration')))
 const Home = Loadable(lazy(() => import('../pages/home/Home')))
+
 const Profile = Loadable(lazy(() => import('../pages/profile/Profile')))
+const UpdateProfile = Loadable(lazy(() => import('../pages/profile/UpdateProfile')))
 
 const Categories = Loadable(lazy(() => import('../pages/categories/Categories')))
 const CreateCategory = Loadable(lazy(() => import('../pages/categories/CreateCategory')))

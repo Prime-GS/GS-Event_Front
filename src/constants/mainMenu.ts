@@ -17,5 +17,6 @@ export const mainMenu: IMenuItem[] = [
   {
     title: 'Категории',
     to: '/categories',
+    roles: ['admin'],
   },
 ]

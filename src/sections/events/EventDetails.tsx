@@ -7,12 +7,12 @@ interface IProps {
 
 export function EventDetails({ event }: IProps) {
   return (
-    <div className='container p-2'>
+    <div className='container'>
       <h1 className='mb-0'>{event.title}</h1>
-      <hr className='mt-0' />
+      <hr />
       <p> {event.description}</p>
       <p>
-        <strong>Дата начала:</strong> {moment(event.startedAt).format('MMMM D-HH:mm')}
+        <strong>Дата начала:</strong> {moment(event.startedAt).format('MMMM D HH:mm')}
       </p>
       <p>
         <strong>Подписавшиеся на ивент:</strong> {event.categories.length}
@@ -40,8 +40,9 @@ export function EventDetails({ event }: IProps) {
             </div>
           </>
         )}
-        <p className='mt-3'>
+        <p className='mt-3 w-100'>
           <strong>Создатель Ивента:</strong> {event.creator.username}
+          <button className='btn btn-primary ms-auto d-block'>Подписаться</button>
         </p>
       </div>
     </div>

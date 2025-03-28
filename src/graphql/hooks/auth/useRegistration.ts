@@ -1,7 +1,8 @@
-// import { useMutation } from '@apollo/client'
-// import { Registration } from '../../queries/auth'
-// import { IRegistData, IRegistVariables } from '../../types/auth'
+import { useMutation } from '@apollo/client'
 
-// export const useRegist = () => {
-//   return useMutation<IRegistData, IRegistVariables>(Regist)
-// }
+import { IRegistrationData, IRegistrationVariables } from '@/graphql/types/auth'
+import { REGISTRATION } from '@/graphql/queries'
+
+export const useRegistration = () => {
+  return useMutation<IRegistrationData, IRegistrationVariables>(REGISTRATION)
+}
