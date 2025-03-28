@@ -6,6 +6,7 @@ import { useDeleteEvent, useToggleSubscribe } from '@/graphql/hooks/events'
 import { IEvent } from '@/graphql/types/events'
 
 import { CloseIcon, DeleteIcon, EditIcon } from '@/components/icons'
+import { CommentsSection } from '../comments/CommentsSection'
 import { IconButton } from '@/components/UI'
 import { useStores } from '@/stores/hooks'
 import moment from 'moment'
@@ -79,7 +80,6 @@ export function EventDetails({ event }: IProps) {
         <p>
           <strong>Подписавшиеся на ивент:</strong> {event.subscribers.length}
         </p>
-
         <hr className='mt-0' />
         <div className='mt-3'>
           {event.categories.length !== 0 && (
@@ -114,6 +114,7 @@ export function EventDetails({ event }: IProps) {
           </p>
         </div>
       </div>
+      <CommentsSection />
     </>
   )
 }

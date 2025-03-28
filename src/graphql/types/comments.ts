@@ -15,7 +15,7 @@ export interface IComment {
 }
 
 export interface ICommentInput {
-  id?: string
+  id?: number
   message: string
   eventId: number
   authorId: number
