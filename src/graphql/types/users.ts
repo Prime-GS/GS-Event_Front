@@ -16,10 +16,9 @@ export interface IUserInput {
 
 export interface IUpdateUserInput {
   id: number
-  username?: string | null
-  email?: string | null
-  password?: string | null
-  roles?: string[]
+  username: string
+  email: string
+  password?: string
 }
 
 export interface IGetUsersData {

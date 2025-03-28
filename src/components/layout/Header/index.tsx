@@ -1,15 +1,16 @@
 'use client'
 
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Form } from 'react-bootstrap'
+import { useState } from 'react'
 
 import { OffcanvasMenu, IconButton } from '@/components/UI'
 import { CloseIcon, SearchIcon } from '@/components/icons'
 import { HasRolesContent } from '@/components/auth'
 import { IMenuItem, mainMenu } from '@/constants/mainMenu'
 
+import { HeaderAccount } from '../HeaderAccount'
 import styles from './header.module.scss'
-import { Form } from 'react-bootstrap'
 
 export function Header() {
   const [offcanvasShow, setOffcanvasShow] = useState(false)
@@ -76,16 +77,18 @@ export function Header() {
                 <DropdownMenu item={item} />
               ) : (
                 <div>
-                  <Link to={item.to}>
-                    <button className='btn'>{item.title}</button>
+                  <Link to={item.to} className='mx-1'>
+                    <button className='btn px-0'>{item.title}</button>
                   </Link>
                 </div>
               )}
             </HasRolesContent>
           ))}
+          <div className='flex-grow-1'></div>
+          <HeaderAccount />
         </nav>
 
-        <IconButton onClick={toggleSearchShow}>
+        <IconButton onClick={toggleSearchShow} className='me-1'>
           <SearchIcon />
         </IconButton>
       </header>

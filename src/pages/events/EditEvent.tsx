@@ -23,7 +23,7 @@ export default function EditEvent() {
     <Loader full />
   ) : (
     <div className='row mt-5'>
-      <div className='col-6 mx-auto'>
+      <div className='col col-md-6 mx-auto mx-auto'>
         <h4 className='mb-3'>Редактирование ивента {event.title}</h4>
 
         <EventForm

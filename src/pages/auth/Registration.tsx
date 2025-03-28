@@ -1,21 +1,19 @@
-import { Link as RouterLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { LoginForm } from '../../sections/auth'
+import { RegistrationForm } from '@/sections/auth'
 
-export default function Login() {
+export default function Registration() {
   return (
-    <Box>
-      <Typography variant='h4' mb={3}>
-        Регистрация
-      </Typography>
+    <div className='row mt-5'>
+      <div className='col col-md-6 mx-auto mx-auto'>
+        <h4 className='mb-3'>Регистрация</h4>
 
-      <LoginForm />
+        <RegistrationForm />
 
-      <Box textAlign='right'>
-        <Link component={RouterLink} to='/auth/forgot-password'>
-          Забыли пароль?
-        </Link>
-      </Box>
-    </Box>
+        <div className='text-right'>
+          <Link to='/auth/login'>Есть аккаунт?</Link>
+        </div>
+      </div>
+    </div>
   )
 }

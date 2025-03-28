@@ -13,7 +13,7 @@
   flex-grow: 1;
   margin-left: 1rem;
 
-  @media screen and (max-width: $lg) {
+  @include media-breakpoint-down(lg) {
     display: none;
   }
 
@@ -29,7 +29,7 @@
 }
 
 .logoContainer {
-  @media screen and (max-width: $lg) {
+  @include media-breakpoint-down(lg) {
     flex-grow: 1;
     text-align: center;
   }
@@ -38,7 +38,7 @@
 .togglesBox {
   display: none;
 
-  @media screen and (max-width: $lg) {
+  @include media-breakpoint-down(lg) {
     display: block;
     width: 38px;
   }
@@ -76,20 +76,22 @@
 .search {
   width: calc(30% - 2rem);
   position: absolute;
+  z-index: 9999;
   right: 1rem;
   display: flex;
   justify-content: flex-end;
+  background-color: $secondary;
 
   visibility: hidden;
   opacity: 0;
   transition: 0.2s ease-in-out;
   transition-property: opacity, visibility;
 
-  @media screen and (max-width: $lg) {
+  @include media-breakpoint-down(lg) {
     width: calc(100% - 240px);
   }
 
-  @media screen and (max-width: $md) {
+  @include media-breakpoint-down(md) {
     width: calc(100% - 2rem);
   }
 
@@ -116,7 +118,7 @@
       border: 1px #838b93 solid;
       border-radius: 2px;
 
-      @media screen and (max-width: $md) {
+      @include media-breakpoint-down(md) {
         width: 100%;
       }
     }

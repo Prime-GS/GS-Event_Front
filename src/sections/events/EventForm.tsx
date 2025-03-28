@@ -57,8 +57,6 @@ export function EventForm({
     validationSchema: eventSchema,
     onSubmit: async (values, formHelper) => {
       try {
-        console.log(values.categoriesIds)
-
         const { data } = await upsert({
           variables: {
             input: {
@@ -70,7 +68,7 @@ export function EventForm({
         })
 
         if (data?.upsertEvent) {
-          navigate('/events')
+          navigate(-1)
         }
       } catch (error: any) {
         formHelper.setErrors({ afterSubmit: error.message || 'Неверные данные' })
@@ -83,15 +81,14 @@ export function EventForm({
     setFieldValue('slug', createSlug(e.currentTarget.value))
     handleChange(e)
   }
-  
+
   const onCategoryClick = (categoryId: number) => {
     setCategoriesIds((prev) => {
       if (prev.includes(categoryId)) {
-        const filtered = prev.filter((id) => id !== categoryId)
-        return filtered
+        return prev.filter((id) => id !== categoryId)
       }
-      prev.push(categoryId)
-      return [...prev]
+      const newArr: number[] = [...prev, categoryId]
+      return newArr
     })
   }
 
