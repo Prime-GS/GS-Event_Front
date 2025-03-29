@@ -1,12 +1,11 @@
 import { Form as FormikForm, FormikProvider, useFormik } from 'formik'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Form } from 'react-bootstrap'
 import * as Yup from 'yup'
 
 import { useUpsertComment } from '@/graphql/hooks/comments'
 
-import { LoadingButton } from '@/components/UI'
-import { FloatingLabel, Form } from 'react-bootstrap'
-import { useStores } from '@/stores/hooks'
+import { IconButton } from '@/components/UI'
+import { SendIcon } from '@/components/icons'
 
 interface IFormValues {
   id?: number
@@ -14,15 +13,13 @@ interface IFormValues {
   afterSubmit?: string
 }
 
-interface IProps extends IFormValues {
+interface IProps {
+  comment?: IFormValues
   eventId: number
 }
 
-export function CommentForm({ comment = { id: undefined, message: '', eventId: -1 } }: { comment?: IProps }) {
-  const [upsert, { loading }] = useUpsertComment()
-  const { authStore } = useStores()
-  const location = useLocation()
-  const navigate = useNavigate()
+export function CommentForm({ comment = { id: undefined, message: '' }, eventId }: IProps) {
+  const [upsert] = useUpsertComment()
 
   const CommentSchema = Yup.object().shape({
     message: Yup.string().required('Текст комментария обязателен'),
@@ -34,18 +31,13 @@ export function CommentForm({ comment = { id: undefined, message: '', eventId: -
     },
     validationSchema: CommentSchema,
     onSubmit: async (values, formHelper) => {
-      if (!authStore.user) {
-        navigate('/auth/login')
-        return
-      }
-
       try {
         const { data } = await upsert({
-          variables: { input: { ...values, authorId: authStore.user.id, eventId: comment.eventId } },
+          variables: { input: { ...values, eventId } },
         })
 
         if (data?.upsertComment) {
-          navigate(location.pathname)
+          window.location.reload()
         }
       } catch (error) {
         formHelper.setErrors({ afterSubmit: 'Неверные данные' })
@@ -65,13 +57,11 @@ export function CommentForm({ comment = { id: undefined, message: '', eventId: -
         )}
 
         <div className='d-flex flex-row'>
-          <FloatingLabel label={`Комментарий *`} className='mb-3 flex-grow-1'>
-            <Form.Control required className='' {...getFieldProps('message')} />
-          </FloatingLabel>
+          <Form.Control style={{ height: '40px' }} required className='small' {...getFieldProps('message')} />
 
-          <LoadingButton className='mb-3 btn-primary' loading={loading} type='submit' variant='contained'>
-            {'>'}
-          </LoadingButton>
+          <IconButton className='btn' type='submit'>
+            <SendIcon color='#3363c2' />
+          </IconButton>
         </div>
       </FormikForm>
     </FormikProvider>

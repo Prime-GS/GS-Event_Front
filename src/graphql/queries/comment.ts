@@ -1,14 +1,19 @@
 import { gql } from '@apollo/client'
+import { USER_FRAGMENT } from './users'
 
 export const COMMENT_FRAGMENT = gql`
   fragment CommentFragment on Comment {
     id
-    title
-    description
-    color
+    message
+    author {
+      ...UserFragment
+    }
+    eventId
+    answerTo
     createdAt
     updatedAt
   }
+  ${USER_FRAGMENT}
 `
 
 export const GET_COMMENTS_BY_EVENT = gql`

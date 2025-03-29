@@ -114,7 +114,7 @@ export function EventDetails({ event }: IProps) {
           </p>
         </div>
       </div>
-      <CommentsSection />
+      <CommentsSection id={event.id} />
     </>
   )
 }

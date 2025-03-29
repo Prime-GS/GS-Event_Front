@@ -1,21 +1,16 @@
 import { useCommentsByEvent } from '@/graphql/hooks/comments'
+import { Comment } from '@/components/comments/Comment'
 
-export function CommentsList(id: number) {
-  const { comments } = useCommentsByEvent(id)
+export function CommentsList({ id }: { id: number }) {
+  const { comments, total } = useCommentsByEvent(id)
 
-  return comments.length === 0 ? (
-    <p>Комментариев нет</p>
+  return total === 0 ? (
+    <span>Комментариев нет</span>
   ) : (
-    <div>
-      {comments.map((comment) => (
-        <div key={comment.id} style={{ marginBottom: '1rem' }}>
-          <p>
-            <strong>{comment.author.username}</strong>
-          </p>
-          <p>{comment.message}</p>
-          <p style={{ fontSize: '0.8rem', color: 'gray' }}>{new Date(comment.createdAt).toLocaleString()}</p>
-        </div>
+    <>
+      {comments.map(({ message, author, createdAt }) => (
+        <Comment message={message} author={author.username} createdAt={createdAt} />
       ))}
-    </div>
+    </>
   )
 }

@@ -18,7 +18,6 @@ export interface ICommentInput {
   id?: number
   message: string
   eventId: number
-  authorId: number
   answerTo?: number
 }
 
