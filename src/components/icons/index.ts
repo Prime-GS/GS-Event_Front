@@ -1,3 +1,4 @@
+export * from './CheckIcon'
 export * from './CloseIcon'
 export * from './DeleteIcon'
 export * from './EditIcon'

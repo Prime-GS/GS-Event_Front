@@ -1,24 +1,15 @@
-
+import { Link } from 'react-router-dom'
 
 const PageNotFound: React.FC = () => {
   return (
-    <Root>
-      <BrokenImageOutlined sx={{ fontSize: '7rem', color: '#ccc', mb: 1 }} />
-      <Typography variant='h5' textAlign='center' color='grey.400' gutterBottom>
-        Страница не найдена
-      </Typography>
-    </Root>
+    <div className='min-vh-100 d-flex flex-column justify-content-center align-items-center text-white'>
+      <h1 className='display-1'>404</h1>
+      <h5>Страница не найдена</h5>
+      <button className='btn btn-primary'>
+        <Link to={'/'}> Вернуться</Link>
+      </button>
+    </div>
   )
 }
-
-const Root = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: 'calc(100vh - 200px)',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginLeft: theme.spacing(3),
-  marginRight: theme.spacing(3),
-}))
 
 export default PageNotFound

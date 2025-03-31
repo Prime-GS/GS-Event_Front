@@ -5,7 +5,6 @@ export interface ICategory {
   title: string
   description?: string | null
   color?: string | null
-
 }
 
 export interface ICategoryInput {
