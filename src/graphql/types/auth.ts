@@ -5,14 +5,31 @@ export interface ILoginInput {
   password: string
 }
 
+export interface IRegistrationInput {
+  username: string
+  email: string
+  password: string
+}
+
+export interface ICheckEmailData {
+  checkEmail: boolean
+}
+
 export interface IUpdateProfileInput {
   id: number
-  username?: string
+  username: string
   password?: string
 }
 
 export interface ILoginData {
   login: {
+    user: IUser
+    token: string
+  }
+}
+
+export interface IRegistrationData {
+  registration: {
     user: IUser
     token: string
   }
@@ -28,6 +45,10 @@ export interface IUpdateProfileVariables {
 
 export interface ILoginVariables {
   input: ILoginInput
+}
+
+export interface IRegistrationVariables {
+  input: IRegistrationInput
 }
 
 export interface IMeData {

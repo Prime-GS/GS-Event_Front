@@ -21,6 +21,10 @@ export interface IGetByIdVariables {
   id: number
 }
 
+export interface IGetBySlugVariables {
+  slug: string
+}
+
 export interface IDeleteVariables {
   id: number
 }
